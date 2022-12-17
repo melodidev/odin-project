@@ -1,7 +1,29 @@
 body {
 	background-color: papayawhip;
 	text-align: center;
-	font-size: 50px;
+	font-size: 30px;
 	font-family: 'Courier New', monospace;
-	margin-top: 200px;
+	margin-top: 175px;
 }
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 750px;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+}
+
+button {
+	font-size: 100px;
+	padding: 15px;
+}
+
+.output {
+	margin-top: 40px;
+}
+
