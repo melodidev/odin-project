@@ -79,6 +79,7 @@ body {
 	grid-template-rows: repeat(3, 100px);
 	grid-template-columns: repeat(3, 100px);
 	margin-top: 60px;
+	caret-color: transparent;
 }
 
 .box {
