@@ -55,10 +55,10 @@ body {
 .start-container {
 	gap:75px;
 	margin-top: 35px;
-	margin-bottom: 100px;
+	margin-bottom: 30px;
 }
 
-input {
+.name-input {
 	padding-top: 0;
 	padding-bottom: 0;
 	width: 150px;
@@ -68,6 +68,7 @@ input {
 	font-family: 'Mansalva', cursive;
 	border: none;
 	background-color: inherit;
+	margin-top: 70px;
 }
 
 .start-page button:hover {
