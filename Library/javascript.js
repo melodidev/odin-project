@@ -1,11 +1,14 @@
 let options = ["unread", "reading", "finished", "dropped"];
 
-function Book(name, author, page, status) {
-	this.name = name
-	this.author = author
-	this.page = page
-	this.status = status
+class Book {
+	constructor(name, author, page, status) {
+		this.name = name
+		this.author = author
+		this.page = page
+		this.status = status
+	}
 }
+
 
 let myLibrary = [];
 
