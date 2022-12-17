@@ -1,0 +1,37 @@
+body {
+	background-color: papayawhip;
+}
+
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0;
+}
+
+button {
+	font-size: 18px;
+	font-family: 'Courier New', monospace;
+	padding: 5px 8px;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.row {
+	flex: 1;
+	display: flex;
+	gap: 1px;
+}
+
+.box {
+	background-color: rgb(255, 255, 255);
+	flex: 1;
+}

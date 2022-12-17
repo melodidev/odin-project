@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Mansalva&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<script src="javascript.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>Tic-Tac-Toe</title>
+</head>
+<body>
+	<button class="btn-replay btn-default position-absolute hover-cursor-pointer visibility-hidden">
+		<span class="material-symbols-outlined">replay</span>
+	</button>
+	<div class="announce position-absolute text-align-center fs-50"></div>
+	<div class="paper border-box position-relative">
+  	<div class="pattern">
+
+  		<div class="start-page">
+  			<div class="header fs-50">Tic-Tac-Toe</div>
+  			<form>
+	  			<div class="start-container flex justify-content-center">
+		  			<div>
+		  				<div class="fs-35 mx-10">Player 1</div>
+							<label for="player1_name">Name:</label>
+							<input type="text" id="player1_name" name="player1_name" class="btn-default border-bottom" required>
+		  			</div>
+		  			<div>
+		  				<div class="fs-35 mx-10">Player 2</div>
+							<label for="player2_name">Name:</label>
+							<input type="text" id="player2_name" name="player2_name" class="btn-default border-bottom" required>
+		  			</div>
+	  			</div>
+		  		<button type="submit" class="btn-start hover-cursor-pointer fs-35">START!</button>
+	  		</form>
+  		</div>
+
+    	<div class="status none">Waiting for Player 1's move.</div>
+    	<div class="box-container grid justify-content-center none">
+			  <div data-key="1" class="box grid align-content-center fs-80"></div>
+			  <div data-key="2" class="box grid align-content-center fs-80"></div>
+			  <div data-key="3" class="box grid align-content-center fs-80"></div>
+			  <div data-key="4" class="box grid align-content-center fs-80"></div>
+			  <div data-key="5" class="box grid align-content-center fs-80"></div>
+			  <div data-key="6" class="box grid align-content-center fs-80"></div>
+			  <div data-key="7" class="box grid align-content-center fs-80"></div>
+			  <div data-key="8" class="box grid align-content-center fs-80"></div>
+			  <div data-key="9" class="box grid align-content-center fs-80"></div>
+			</div>
+  	</div>
+	</div>
+</body>
+</html>

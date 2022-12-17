@@ -1,0 +1,171 @@
+:root {
+  --bg-light: #f9fafb;
+  --border-light: #f0f2f5;
+  --border-medium: #d6d9dc;
+  --shadow-light: #dadce7;
+  --button-bg: #9488dd;
+  --button-medium: #6f60d2;
+  --dark: rgb(60,60,60);
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--bg-light);
+	font-family: "Inter", Verdana, sans-serif;
+	font-size: 18px;
+}
+
+.logo {
+	padding: 20px 0;
+	top: 280px;
+	width: 100%;
+	background-color: rgba(0,0,0,.4);
+	color: white;
+	font-family: 'Amatic SC', cursive;
+	font-size: 120px;
+	text-align: center;
+}
+
+.logo > img {
+	height: 150px;
+}
+
+.credit {
+	bottom: 10px;
+}
+
+.container {
+  margin-right: 80px;
+  margin-left: 80px;
+}
+
+.section-info {
+	margin-top: 150px;
+	margin-bottom: 50px;
+}
+
+.section-info > div:last-child {
+	margin-top: 30px;
+}
+
+.section-form {
+	padding-top: 20px;
+	border-top: 1px solid var(--border-light);
+	box-shadow: 0px 5px 5px var(--shadow-light);
+}
+
+.form-row {
+	margin-bottom: 45px;
+  justify-content: flex-start;
+}
+
+.form-row input {
+  border: 1px solid var(--border-medium);
+  border-radius: 3px;
+  width: 80%;
+  padding: 7px;
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.form-row input:focus {
+	box-shadow: 5px 5px 5px var(--shadow-light);
+}
+
+.form-row input:focus-visible {
+	outline: 2px solid dodgerblue;
+}
+
+.form-row div:not(.error-msg) {
+	margin-top: 15px;
+}
+
+.form-row div:not(:last-child),
+.form-row div:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+#password, #password_confirm {
+	margin-bottom: 5px;
+}
+
+.form-row label {
+	color: var(--dark);
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.error-msg {
+	color: red;
+	font-size: 12px;
+	position: absolute;
+	margin-top: 0;
+}
+
+button {
+	margin-top: 35px;
+	margin-bottom: 35px;
+	padding: 15px 35px;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	background-color: var(--button-bg);
+	border: 1px solid var(--button-bg);
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px var(--shadow-light);
+}
+
+button:hover,
+button:focus {
+	background-color: var(--button-medium);
+	cursor: pointer;
+}
+
+button + div > a {
+	color: var(--button-medium);
+	text-decoration: none;
+}
+
+button + div > a:hover {
+	text-decoration: underline;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.flex-center {
+	justify-content: center;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.font-black {
+	color: black;
+}
+
+.bold {
+	font-weight: 500;
+}
+
+.fs-big {
+	font-size: 23px;
+}

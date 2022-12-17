@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>Admin Dashboard</title>
+</head>
+<body>
+
+	<div class="container grid">
+
+		<div class="sidebar bg-blue">
+			<div class="sticky bold font-white">
+				<div class="logo fs-25">
+					<a href="#" class="flex align-items text-decoration-none">
+						<i class="material-icons fs-35">dashboard</i>
+						<span>Dashboard</span>
+					</a>
+				</div>
+				<div class="fs-18">
+					<ul class="list-style-none">
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">home</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Home</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">badge</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Profile</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">chat_bubble</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Messages</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">history</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">History</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">task</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Tasks</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">groups</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Communities</a></span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="fs-18">
+					<ul class="list-style-none">
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">settings</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Settings</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">help_center</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Support</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="flex align-items">
+								<i class="material-icons">verified_user</i>
+								<span class="underline-hover"><a href="#" class="text-decoration-none underline-hover">Privacy</a></span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="header">
+			<div class="header-part-1 grid space-between">
+				<div class="flex align-items">
+					<button class="search-button"><i class="material-symbols-outlined">search</i></button>
+					<input type="search" id="search" name="search" class="search bg-grey border-none"/>
+				</div>
+				<div class="flex align-items justify-self-end gap-20">
+					<i class="material-symbols-outlined cursor-pointer">notifications</i>
+					<img src="avatar.jpg" class="border-circle">
+					<a href="#" class="extra-bold fs-18 text-decoration-none underline-hover">Melodi</a>
+				</div>
+			</div>
+			<div class="header-part-2 grid align-items">
+				<div class="flex align-items gap-15">
+					<img src="avatar.jpg" class="border-circle">
+					<div>
+						<div class="fs-12 bold">Hi there,</div>
+						<a class="fs-20 extra-bold text-decoration-none underline-hover">Melodi (@melodidev)</a>
+					</div>
+				</div>
+				<div class="justify-self-end flex gap-20">
+					<button class="bg-blue font-white border-none cursor-pointer fs-15 bold">New</button>
+					<button class="bg-blue font-white border-none cursor-pointer fs-15 bold">Upload</button>
+					<button class="bg-blue font-white border-none cursor-pointer fs-15 bold">Share</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="main grid bg-grey">
+
+			<div class="projects">
+				<div class="sub-title-1 bold fs-18">Your Projects</div>
+				<div class="projects-section grid gap-20">
+					<div class="box relative border-10 shadow">
+						<div class="extra-bold mb-1">Super Cool Project</div>
+						<div class="fs-15 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+						<div class="icon-chunk flex align-items gap-15 absolute">
+							<i class="material-symbols-outlined mb-1">star</i>
+							<i class="material-symbols-outlined">comment</i>
+							<i class="material-symbols-outlined">share</i>
+						</div>
+					</div>
+					<div class="box relative border-10 shadow">
+						<div class="extra-bold mb-1">Super Cool Project</div>
+						<div class="fs-15 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+						<div class="icon-chunk flex align-items gap-15 absolute">
+							<i class="material-symbols-outlined mb-1">star</i>
+							<i class="material-symbols-outlined">comment</i>
+							<i class="material-symbols-outlined">share</i>
+						</div>
+					</div>
+					<div class="box relative border-10 shadow">
+						<div class="extra-bold mb-1">Super Cool Project</div>
+						<div class="fs-15 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+						<div class="icon-chunk flex align-items gap-15 absolute">
+							<i class="material-symbols-outlined mb-1">star</i>
+							<i class="material-symbols-outlined">comment</i>
+							<i class="material-symbols-outlined">share</i>
+						</div>
+					</div>
+					<div class="box relative border-10 shadow">
+						<div class="extra-bold mb-1">Super Cool Project</div>
+						<div class="fs-15 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt.
+						</div>
+						<div class="icon-chunk flex align-items gap-15 absolute">
+							<i class="material-symbols-outlined mb-1">star</i>
+							<i class="material-symbols-outlined">comment</i>
+							<i class="material-symbols-outlined">share</i>
+						</div>
+					</div>
+					<div class="box relative border-10 shadow">
+						<div class="extra-bold mb-1">Super Cool Project</div>
+						<div class="fs-15 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+						<div class="icon-chunk flex align-items gap-15 absolute">
+							<i class="material-symbols-outlined mb-1">star</i>
+							<i class="material-symbols-outlined">comment</i>
+							<i class="material-symbols-outlined">share</i>
+						</div>
+					</div>
+					<div class="box relative border-10 shadow">
+						<div class="extra-bold mb-1">Super Cool Project</div>
+						<div class="fs-15 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</div>
+						<div class="icon-chunk flex align-items gap-15 absolute">
+							<i class="material-symbols-outlined mb-1">star</i>
+							<i class="material-symbols-outlined">comment</i>
+							<i class="material-symbols-outlined">share</i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="announcements">
+				<div class="sub-title-2 bold fs-18">Announcements</div>
+				<div class="announcements-section bg-white border-10 shadow">
+					<div>
+						<div class="fs-14 extra-bold mt-3">Site Maintainence</div>
+						<div class="fs-12 font-grey border-bottom">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.
+						</div>
+					</div>
+					<div>
+						<div class="fs-14 extra-bold mt-3">Site Maintainence</div>
+						<div class="fs-12 font-grey border-bottom">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.
+						</div>
+					</div>
+					<div>
+						<div class="fs-14 extra-bold mb-1 mt-3">Site Maintainence</div>
+						<div class="fs-12 font-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua.
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="trending">
+				<div class="sub-title-3 bold fs-18">Trending</div>
+				<div class="trending-section fs-14 bg-white border-10 shadow">
+					<div class="flex align-items gap-15 mb-3">
+						<img src="avatar.jpg" class="border-circle">
+						<div>
+							<a href="#" class="text-decoration-none underline-hover">@melodidev</a>
+							<div class="font-grey">Super Cool App</div>
+						</div>
+					</div>
+					<div class="flex align-items gap-15 mb-3">
+						<img src="avatar.jpg" class="border-circle">
+						<div>
+							<a href="#" class="text-decoration-none underline-hover">@melodidev</a>
+							<div class="font-grey">Super Cool App</div>
+						</div>
+					</div>
+					<div class="flex align-items gap-15 mb-3">
+						<img src="avatar.jpg" class="border-circle">
+						<div>
+							<a href="#" class="text-decoration-none underline-hover">@melodidev</a>
+							<div class="font-grey">Super Cool App</div>
+						</div>
+					</div>
+					<div class="flex align-items gap-15">
+						<img src="avatar.jpg" class="border-circle">
+						<div>
+							<a href="#" class="text-decoration-none underline-hover">@melodidev</a>
+							<div class="font-grey">Super Cool App</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Caesar+Dressing&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">  
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="javascript.js" defer></script>
+	<title>Sign-Up Form</title>
+</head>
+<body>
+	<div class="flex">
+		<div class="position-relative">
+			<div class="logo flex flex-center position-absolute">
+				<img src="odin-lined.png">
+				<div>MIKO</div>
+			</div>
+			<img src="meyoco.jpg">
+			<div class="flex flex-center">
+				<div class="credit position-absolute">Illusration by 
+					<a href="https://meyoco.art/" class="font-black">Meyoco</a>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="section-info container bold fs-big">
+				<div>
+					This is not a real online service! You know you need something like this in your life to help you realize your deepest dreams. Sign up <i>now</i> to get started.
+				</div>
+				<div>You <i>know</i> you want to.</div>
+			</div>
+			<div class="section-form bg-white">
+				<div class="container bold fs-big">Let's do this!</div>
+				<form action="#" method="post">
+					<div class="container flex">
+					<div class="flex flex-column form-row">
+						<div>
+							<label for="first_name">First Name</label>
+							<input required type="text" id="first_name" name="first_name">
+						</div>
+						<div>
+							<label for="email">Email</label>
+							<input required type="email" id="email" name="email">
+						</div>
+						<div>
+							<label for="password">Password</label>
+							<input required type="password" id="password" name="password">
+							<div class="error-msg"></div>
+						</div>
+					</div>
+					<div class="flex flex-column form-row">
+						<div>
+							<label for="last_name">Last Name</label>
+							<input required type="text" id="last_name" name="last_name">
+						</div>
+						<div>
+							<label for="phone_number">Phone Number</label>
+							<input required type="tel" id="phone_number" name="phone_number"pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" >
+						</div>
+						<div>
+							<label for="confirm_password">Confirm Password</label>
+							<input required type="password" id="confirm_password" name="confirm_password">
+						</div>
+					</div>
+					</div>
+				</form>
+			</div>
+			<div class="section-sign-up container">
+				<button>Create Account</button>
+				<div>Already have an account? <a href="#" class="bold">Log in</a></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Karma:wght@600&family=Signika+Negative:wght@300;400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+	<script src="javascript.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>📚 Who reads?</title>
+</head>
+<body>
+
+	<div class="container grid">
+
+
+
+		<div class="sidebar bg-secondary">
+			<div class="sidebar-content">
+				<a href="#" class="logo text-decoration-none fw-medium fs-40">
+					<span class="dark-blue">Who</span>reads
+				</a>
+				<form action="#" method="post" class="grid">
+					<div class="flex flex-column gap-20">
+						<div><label for="name">Name:</label></div>
+						<div><label for="author">Author:</label></div>
+						<div><label for="page">Pages:</label></div>
+						<div>Status:</div>
+					</div>
+					<div class="flex flex-column gap-15">
+						<input class="input fw-light fs-16" type="text" id="name" name="name" required>
+						<input class="input fw-light fs-16" type="text" id="author" name="author" required>
+						<input class="input fw-light fs-16" type="number" id="page" name="page" min="1" required>
+						<select class="bg-white fw-light fs-16" name="status" id="status" required>
+							<option value="" selected disabled>---</option>
+							<option value="unread">unread</option>
+							<option value="reading">reading</option>
+							<option value="finished">finished</option>
+							<option value="dropped">dropped</option>
+						</select>
+						<button type="submit" class="bg-blue cursor-pointer hover-darken">Add Book</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+		<div class="main">
+			<table>
+			  <thead>
+			    <tr>
+			      <th class="text-align-start" scope="col">Name</th>
+			      <th class="text-align-start" scope="col">Author</th>
+			      <th class="text-align-end" scope="col">Pages</th>
+			      <th class="text-align-end" scope="col">Status</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>
+
