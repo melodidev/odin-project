@@ -1,0 +1,174 @@
+:root {
+  --grey: rgb(90,90,90);
+  --darkgrey: rgb(60,60,60);
+  --darkgrey-opac: rgb(60,60,60,0.5);
+}
+
+body {
+	background: linear-gradient(135deg, #f3ccbe, #f3f3be, #bef3be, #bef3f3, #bebef3, #e6bef3);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Signika Negative', sans-serif;
+  font-size: 18px;
+}
+
+.container {
+  margin: 30px 20px 0 20px;
+  /* gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); */
+}
+
+.box {
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 5%;
+  border: 5px solid rgb(250, 250, 250, 0.3);
+  width: 265px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.icon-add-todo {
+  right: 10px;
+  top: 10px;
+}
+
+details .icon-summary {
+  transition: .3s ease;
+  transform-origin: center;
+}
+details[open] .icon-summary {
+  transform: rotateX(180deg);
+}
+
+.icon-add-todobox {
+  margin: 10px 0 10px 0;
+}
+
+.prior {
+  background-color: #fff176;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: var(--grey);
+}
+
+/* daha düzenlemedim */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+
+/* Custom classes */
+.flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-direction-col {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 2px;
+}
+
+.gap-5 {
+  gap: 5px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.hover-cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.hover-darkgrey:hover {
+  color: var(--darkgrey);
+}
+
+.darkgrey {
+  color: var(--darkgrey);
+}
+
+.darkgrey-opac {
+  color: var(--darkgrey-opac);
+}
+
+.grey {
+  color: var(--grey);
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fs-22 { font-size: 22px; }
+.fs-18 { font-size: 18px; }
+.fs-15 { font-size: 15px; }
+.fs-40 { font-size: 40px; }
