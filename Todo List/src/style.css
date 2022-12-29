@@ -55,6 +55,31 @@ details[open] .icon-summary {
   color: var(--grey);
 }
 
+button {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: mistyrose;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 3px solid #ff8093;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: snow;
+}
+
+.btn-cancel {
+  border-color: turquoise;
+  background-color: lightcyan;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-weight: 300;
+}
+
 /* daha düzenlemedim */
 .modal {
   display: none;
@@ -70,16 +95,28 @@ details[open] .icon-summary {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal-content {
+.modal-box {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 30%;
+}
+
+.modal-header {
+  border-bottom: 3px solid white;
+  border-image: linear-gradient(90deg, #fff176 10%, white 90%) 30;
 }
 
 
+
+
+
+
 /* Custom classes */
+
+
+
 .flex {
   display: flex;
 }
@@ -98,6 +135,14 @@ details[open] .icon-summary {
 
 .flex-direction-col {
   flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1
+}
+
+.align-self-start {
+  align-self: start;
 }
 
 .gap-2 {
@@ -144,26 +189,6 @@ details[open] .icon-summary {
   color: var(--grey);
 }
 
-.mt-5 {
-  margin-top: 5px;
-}
-
-.mt-10 {
-  margin-top: 10px;
-}
-
-.mr-10 {
-  margin-right: 10px;
-}
-
-.mb-5 {
-  margin-bottom: 5px;
-}
-
-.mb-10 {
-  margin-bottom: 10px;
-}
-
 .fw-300 {
   font-weight: 300;
 }
@@ -172,3 +197,13 @@ details[open] .icon-summary {
 .fs-18 { font-size: 18px; }
 .fs-15 { font-size: 15px; }
 .fs-40 { font-size: 40px; }
+
+.mt-5 { margin-top: 5px; }
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mr-10 { margin-right: 10px; }
+.mb-5 { margin-bottom: 5px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.my-10 { margin: 0 10px 0 10px; }
+.mx-20 { margin: 20px 0 20px 0; }

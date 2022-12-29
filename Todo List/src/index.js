@@ -1,8 +1,7 @@
 import './style.css';
 
-import { setMasonry, editTodoModal, displayTodos } from './dom';
-import { todos } from './functions';
+import { setMasonry, displayTodos } from './dom';
+import { todos } from './data';
 
 setMasonry();
 displayTodos(todos);
-editTodoModal();

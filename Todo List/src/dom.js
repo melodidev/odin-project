@@ -1,4 +1,7 @@
 import Masonry from 'masonry-layout';
+import { todos } from './data';
+import { addTodo, deleteTodo } from './functions';
+import { openModal, closeModal, setModalOkButton } from './modal';
 
 export function setMasonry() {
   var elem = document.querySelector('.container');
@@ -8,71 +11,162 @@ export function setMasonry() {
   });
 }
 
-export function editTodoModal(button) {
-  document.querySelectorAll(".icon-edit").forEach((button) => {
-    button.addEventListener("click", () => {
-
-      let modal = document.querySelector(".modal");
-      modal.style.display = "block";
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
+function domTree(todo) {
+  return {
+    tag: "div",
+    classList: ["flex", "gap-5", "todo-item"],
+    children: [
+      {
+        tag: "span",
+        classList: ["material-symbols-outlined", "hover-cursor-pointer", "fs-22"],
+        textContent: "check_box_outline_blank",
+      },
+      {
+        tag: "details",
+        classList: ["width-full"],
+        children: [
+          {
+            tag: "summary",
+            classList: ["flex", "hover-cursor-pointer"],
+            children: [
+              {
+                tag: "div",
+                textContent: todo.title,
+              },
+              {
+                tag: "span",
+                classList: ["material-symbols-outlined", "icon-summary", "fs-18"],
+                textContent: "expand_more",
+              },
+            ],
+          },
+          {
+            tag: "div",
+            classList: ["fs-15", "mt-10", "mb-5"],
+            children: [
+              {
+                tag: "div",
+                classList: ["fw-300"],
+                textContent: todo.description,
+              },
+              {
+                tag: "div",
+                classList: ["flex", "space-between", "align-items-center", "mt-5"],
+                children: [
+                  {
+                    tag: "div",
+                    textContent: todo.dueDate,
+                  },
+                  {
+                    tag: "div",
+                    classList: ["mr-10"],
+                    children: [
+                      {
+                        tag: "span",
+                        classList: ["material-symbols-outlined", "icon-delete", "hover-darkgrey", "hover-cursor-pointer", "grey", "fs-22"],
+                        textContent: "delete",
+                        dataset: [
+                          ['id', todo.id],
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       }
+    ],
+  }
+}
 
+function createElements(node) {
+  let element = document.createElement(node.tag);
+
+  if (node.classList) {
+    element.classList.add(...node.classList);
+  }
+  
+  element.textContent = node.textContent;
+
+  if (node.dataset) {
+    node.dataset.forEach(([key, value]) => {
+      element.dataset[key] = value;
     });
-  });
+  }
+
+  if (node.children) {
+    node.children.forEach(child => {
+      element.appendChild(createElements(child));
+    });
+  }
+
+  return element;
 }
 
 export function displayTodos(todos) {
-    todos.forEach((todo) => {
-      let div = document.createElement("div");
-      div.classList.add("flex", "gap-5");
-      let span = document.createElement("span");
-      span.classList.add("material-symbols-outlined", "hover-cursor-pointer", "fs-22");
-      span.textContent = "check_box_outline_blank";
-      
-      let details = document.createElement("details");
-      details.classList.add("width-full");
-      let summary = document.createElement("summary");
-      summary.classList.add("flex", "hover-cursor-pointer");
-      let div1 = document.createElement("div");
-      div1.textContent = todo.title;
-      summary.appendChild(div1);
-      let span1 = document.createElement("span");
-      span1.classList.add("material-symbols-outlined", "icon-summary", "fs-18");
-      span1.textContent = "expand_more";
-      summary.appendChild(span1);
-      details.appendChild(summary);
-
-      let div2 = document.createElement("div");
-      div2.classList.add("fs-15", "mt-10", "mb-5");
-      let div3 = document.createElement("div");
-      div3.classList.add("fw-300");
-      div3.textContent = todo.description;
-      div2.appendChild(div3);
-      let div4 = document.createElement("div");
-      div4.classList.add("flex", "space-between", "align-items-center", "mt-5");
-      let div5 = document.createElement("div");
-      div5.textContent = todo.dueDate;
-      div4.appendChild(div5);
-      let div6 = document.createElement("div");
-      div6.classList.add("mr-10");
-      let span2 = document.createElement("span");
-      span2.classList.add("material-symbols-outlined", "icon-edit", "hover-darkgrey", "hover-cursor-pointer", "grey", "fs-22");
-      span2.textContent = "edit_note";
-      div6.appendChild(span2);
-      let span3 = document.createElement("span");
-      span3.classList.add("material-symbols-outlined", "icon-delete", "hover-darkgrey", "hover-cursor-pointer", "grey", "fs-22");
-      span3.textContent = "delete";
-      div6.appendChild(span3);
-
-      div4.appendChild(div6);
-      div2.appendChild(div4);
-      details.appendChild(div2);
-      div.appendChild(span);
-      div.appendChild(details);
-      document.querySelector(".box").appendChild(div);
+  todos.forEach((todo) => {
+    addTodoToDom(todo);
   });
 }
+
+function addTodoEventListeners(element) {
+  // Handle delete
+  element.querySelector(".icon-delete").addEventListener("click", (event) => {
+    const id = event.target.dataset.id;
+    const todo = todos.find((todo) => todo.id == id);
+
+    document.querySelector(".modal-header").textContent = `Delete Todo`;
+    document.querySelector(".modal-content").textContent = `Do you want to delete "${todo.title}"?`;
+
+    setModalOkButton("Delete", (event) => {
+      deleteTodo(id);
+      //let superParent = findSuperParent(event.target, "todo-item");
+      document.querySelector(".box").removeChild(element);
+      closeModal();
+    });
+
+    openModal();
+  });
+}
+
+function addTodoToDom(todo) {
+  let box = document.querySelector(".box");
+  let element = createElements(domTree(todo));
+  box.appendChild(element);
+  addTodoEventListeners(element);
+}
+
+// Change later to querySelectorAll
+document.querySelector(".icon-add-todo").addEventListener("click", (event) => {
+  document.querySelector(".modal-header").textContent = `Add Todo`;
+  document.querySelector(".modal-content").innerHTML = `
+    <form class="flex justify-content-center mb-10">
+      <div class="flex flex-direction-col">
+        <label class="mt-10" for="title">Title:</label>
+        <label class="mt-10" for="dueDate">Due date:</label>
+        <label class="mt-10" for="prior">Prior:</label>
+        <label class="mt-10" for="description">Description:</label>
+      </div>
+      <div class="flex flex-direction-col flex-grow my-10">
+        <input class="mt-10" type="text" id="title" name="title" required>
+        <input class="mt-10" type="text" id="dueDate" name="dueDate">
+        <input class="align-self-start mt-10" type="checkbox" id="prior" name="prior">
+        <textarea class="mt-10" id="description" name="description"></textarea>
+      </div>
+    </form>
+  `;
+
+    setModalOkButton("Add", (event) => {
+      let form = document.querySelector('.modal form');
+      let data = new FormData(form);
+      let todo = addTodo(data);
+      addTodoToDom(todo);
+      closeModal();
+    });
+
+  openModal();
+});
+
+
