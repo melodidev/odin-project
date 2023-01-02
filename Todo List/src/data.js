@@ -10,8 +10,8 @@ export let todos = [
 		title: 'Do exercise',
 		description: 'You lazy potato.',
 		dueDate: '23th September',
-		priority: false,
-		done: false,
+		priority: true,
+		done: true,
 	},
 	{
 		title: 'Do laundry',

@@ -18,3 +18,19 @@ export function addTodo(data) {
 	setTodos([...todos, todo]);
 	return todo;
 }
+
+// done todo
+export function changeDone(id) {
+	let todo = todos.find(todo => todo.id == id);
+	
+	if (todo.done) {
+		todo.done = false;
+	} else {
+		todo.done = true;
+	}
+	console.log(todo);
+}
+
+// delete todo box
+
+// add todo box

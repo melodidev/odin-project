@@ -2,6 +2,8 @@
   --grey: rgb(90,90,90);
   --darkgrey: rgb(60,60,60);
   --darkgrey-opac: rgb(60,60,60,0.5);
+  --highlight: #fff176;
+  --highligt-grey: rgb(186, 186, 186, 0.5);
 }
 
 body {
@@ -21,6 +23,7 @@ body {
 }
 
 .box {
+  user-select: none;
   background-color: rgb(255, 255, 255, 0.2);
   border-radius: 5%;
   border: 5px solid rgb(250, 250, 250, 0.3);
@@ -46,13 +49,20 @@ details[open] .icon-summary {
   margin: 10px 0 10px 0;
 }
 
-.prior {
-  background-color: #fff176;
+.priority > details > summary > div:first-of-type {
+  background-color: var(--highlight);
 }
 
-.checked {
-  text-decoration: line-through;
+.done {
   color: var(--grey);
+}
+
+.done > details > summary > div:first-of-type {
+  text-decoration: line-through;
+}
+
+.done.priority > details > summary > div:first-of-type {
+  background-color: var(--highligt-grey);
 }
 
 button {
@@ -105,7 +115,7 @@ textarea {
 
 .modal-header {
   border-bottom: 3px solid white;
-  border-image: linear-gradient(90deg, #fff176 10%, white 90%) 30;
+  border-image: linear-gradient(90deg, var(--highlight) 10%, white 90%) 30;
 }
 
 
