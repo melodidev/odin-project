@@ -141,13 +141,28 @@ function changeModalContent(func, todoTitle=0) {
           <label class="mt-10" for="description">Description:</label>
         </div>
         <div class="flex flex-direction-col flex-grow my-10">
-          <input class="mt-10" type="text" id="title" name="title" required>
+          <input class="mt-10" type="text" id="title" name="title">
           <input class="mt-10" type="text" id="dueDate" name="dueDate">
           <input class="align-self-start mt-10" type="checkbox" id="prior" name="prior">
           <textarea class="mt-10" id="description" name="description"></textarea>
         </div>
       </form>
     `;
+  } else if (func == "add-todobox") {
+    header.textContent = `Create New Todo Box`;
+    content.innerHTML = `
+      <form class="flex justify-content-center mb-10">
+        <div class="flex flex-direction-col">
+          <label class="mt-10" for="todoboxHeader">Header:</label>
+        </div>
+        <div class="flex flex-direction-col flex-grow my-10">
+          <input class="mt-10" type="text" id="todoboxHeader" name="todoboxHeader">
+        </div>
+      </form>
+    `;
+  } else if (func == "delete-todobox") {
+    header.textContent = `Delete Todo Box`;
+    content.innerHTML = `Do you want to delete Todo Box and all of it's content?`;
   }
 }
 
@@ -215,3 +230,29 @@ document.querySelector(".icon-add-todo").addEventListener("click", (event) => {
 
   openModal();
 });
+
+// Boxes
+document.querySelector(".icon-add-todobox").addEventListener("click", (event) => {
+  changeModalContent("add-todobox");
+  setModalOkButton("Create", (event) => {
+    // functions.js
+    closeModal();
+  });
+
+  openModal();
+});
+
+document.querySelectorAll(".icon-delete-todobox").forEach((icon) => {
+  icon.addEventListener("click", (event) => {
+
+  changeModalContent("delete-todobox");
+  setModalOkButton("Delete", (event) => {
+    // functions.js
+    closeModal();
+  });
+
+  openModal();
+  }); 
+});
+
+
