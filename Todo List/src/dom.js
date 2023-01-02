@@ -1,5 +1,5 @@
 import Masonry from 'masonry-layout';
-import { todos } from './data';
+import { todoBoxes } from './data';
 import { addTodo, deleteTodo, changeDone } from './functions';
 import { openModal, closeModal, setModalOkButton } from './modal';
 
@@ -11,7 +11,46 @@ export function setMasonry() {
   });
 }
 
-function domTree(todo) {
+function domTreeTodoBoxes(todoBox) {
+  return {
+    tag: "div",
+    classList: ["box", "flex", "flex-direction-col", "gap-5", "position-relative"],
+    dataset: [
+      ['id', todoBox.id],
+    ],
+    children: [
+      {
+        tag: "span",
+        classList: [
+          "material-symbols-outlined", "position-absolute", "darkgrey-opac",
+          "hover-cursor-pointer", "hover-darkgrey", "icon-add-todo"
+        ],
+        textContent: "add_box",
+      },
+      {
+        tag: "div",
+        classList: ["flex", "justify-content-center", "align-items-center", "gap-2"],
+        children: [
+          {
+            tag: "div",
+            classList: ["fs-22", "darkgrey", "mb-10"],
+            textContent: todoBox.title,
+          },
+          {
+            tag: "span",
+            classList: [
+              "material-symbols-outlined", "fs-18", "darkgrey-opac",
+              "hover-cursor-pointer", "hover-darkgrey", "icon-delete-todobox"
+            ],
+            textContent: "edit",
+          },
+        ],
+      },
+    ],
+  }
+}
+
+function domTree(todo, boxId) {
   return {
     tag: "div",
     classList: [
@@ -21,6 +60,7 @@ function domTree(todo) {
     ],
     dataset: [
       ['id', todo.id],
+      ['boxId', boxId],
     ],
     children: [
       {
@@ -109,19 +149,6 @@ function createElements(node) {
   return element;
 }
 
-function findSuperParent(element, target) {
-  // base case
-  if (!element.parentNode) {
-    return false;
-  }
-
-  if (element.classList.contains(target)) {
-    return element;
-  } else {
-    return findSuperParent(element.parentNode, target);
-  }
-}
-
 function changeModalContent(func, todoTitle=0) {
   let header = document.querySelector(".modal-header");
   let content = document.querySelector(".modal-content");
@@ -166,32 +193,76 @@ function changeModalContent(func, todoTitle=0) {
   }
 }
 
-export function displayTodos(todos) {
-  todos.forEach((todo) => {
-    addTodoToDom(todo);
+export function displayTodoBoxes(todoBoxes) {
+  todoBoxes.forEach((todoBox) => {
+    let boxElement = addTodoBoxToDom(todoBox);
+
+    todoBox.items.forEach((todo) => {
+      addTodoToDom(todo, todoBox.id, boxElement);
+    });
   });
 }
 
-function addTodoToDom(todo) {
-  let box = document.querySelector(".box");
-  let element = createElements(domTree(todo));
+
+function addTodoBoxToDom(todoBox) {
+  let container = document.querySelector(".box-container");
+  let element = createElements(domTreeTodoBoxes(todoBox));
+  container.appendChild(element);
+  addTodoBoxEventListeners(element);
+  return element;
+}
+
+function addTodoBoxEventListeners(element) {
+  const boxId = element.dataset.id;
+
+  element.querySelector(".icon-add-todo").addEventListener("click", (event) => {
+    changeModalContent("add-todo");
+
+    setModalOkButton("Add", (event) => {
+      let form = document.querySelector('.modal form');
+      let data = new FormData(form);
+      let todo = addTodo(data, boxId);
+      addTodoToDom(todo, boxId, element);
+      closeModal();
+    });
+
+    openModal();
+  });
+
+  document.querySelectorAll(".icon-delete-todobox").forEach((icon) => {
+    icon.addEventListener("click", (event) => {
+
+    changeModalContent("delete-todobox");
+    setModalOkButton("Delete", (event) => {
+      // functions.js
+      closeModal();
+    });
+
+    openModal();
+    }); 
+  });
+}
+
+function addTodoToDom(todo, boxId, box) {
+  let element = createElements(domTree(todo, boxId));
   box.appendChild(element);
   // If we don't add that, newly created todos will not have a event listener for icon-delete
   addTodoEventListeners(element);
 }
 
 function addTodoEventListeners(element) {
+  const id = element.dataset.id;
+  const boxId = element.dataset.boxId;
+  const todoBox = todoBoxes.find((todoBox) => todoBox.id == boxId);
+  const todo = todoBox.items.find((todo) => todo.id == id);
+
   // Handle delete
   element.querySelector(".icon-delete").addEventListener("click", (event) => {
-    let superParent = findSuperParent(event.target, "todo-item");
-    const id = superParent.dataset.id;
-    const todo = todos.find((todo) => todo.id == id);
-
     changeModalContent("delete-todo", todo.title);
 
     setModalOkButton("Delete", (event) => {
-      deleteTodo(id);
-      document.querySelector(".box").removeChild(element);
+      deleteTodo(id, boxId);
+      element.parentNode.removeChild(element);
       closeModal();
     });
 
@@ -200,10 +271,6 @@ function addTodoEventListeners(element) {
 
   // Handle done
   element.querySelector(".checkbox").addEventListener("click", (event) => {
-    let superParent = findSuperParent(event.target, "todo-item");
-    const id = superParent.dataset.id;
-    const todo = todos.find((todo) => todo.id == id);
-
     element.classList.toggle("done");
 
     if (todo.done) {
@@ -212,26 +279,13 @@ function addTodoEventListeners(element) {
       element.firstChild.textContent = "check_box";
     }
 
-    changeDone(id);
+    changeDone(id, boxId);
   });
 }
 
-// Change later to querySelectorAll, get box info and add to box which todo belongs to
-document.querySelector(".icon-add-todo").addEventListener("click", (event) => {
-  changeModalContent("add-todo");
 
-  setModalOkButton("Add", (event) => {
-    let form = document.querySelector('.modal form');
-    let data = new FormData(form);
-    let todo = addTodo(data);
-    addTodoToDom(todo);
-    closeModal();
-  });
 
-  openModal();
-});
-
-// Boxes
+// Create new box
 document.querySelector(".icon-add-todobox").addEventListener("click", (event) => {
   changeModalContent("add-todobox");
   setModalOkButton("Create", (event) => {
@@ -242,17 +296,6 @@ document.querySelector(".icon-add-todobox").addEventListener("click", (event) =>
   openModal();
 });
 
-document.querySelectorAll(".icon-delete-todobox").forEach((icon) => {
-  icon.addEventListener("click", (event) => {
 
-  changeModalContent("delete-todobox");
-  setModalOkButton("Delete", (event) => {
-    // functions.js
-    closeModal();
-  });
-
-  openModal();
-  }); 
-});
 
 

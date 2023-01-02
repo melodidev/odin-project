@@ -1,7 +1,7 @@
 import './style.css';
 
-import { setMasonry, displayTodos } from './dom';
-import { todos } from './data';
+import { setMasonry, displayTodoBoxes } from './dom';
+import { todoBoxes } from './data';
 
+displayTodoBoxes(todoBoxes);
 setMasonry();
-displayTodos(todos);
