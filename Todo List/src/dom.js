@@ -1,6 +1,6 @@
 import Masonry from 'masonry-layout';
 import { todoBoxes } from './data';
-import { addTodo, deleteTodo, changeDone } from './functions';
+import { addTodo, deleteTodo, changeDone, deleteTodoBox, addTodoBox } from './functions';
 import { openModal, closeModal, setModalOkButton } from './modal';
 
 export function setMasonry() {
@@ -149,13 +149,13 @@ function createElements(node) {
   return element;
 }
 
-function changeModalContent(func, todoTitle=0) {
+function changeModalContent(func, title=0) {
   let header = document.querySelector(".modal-header");
   let content = document.querySelector(".modal-content");
 
   if (func == "delete-todo") {
     header.textContent = `Delete Todo`;
-    content.textContent = `Do you want to delete "${todoTitle}"?`;
+    content.textContent = `Do you want to delete "${title}"?`;
   } 
   else if (func == "add-todo") {
     header.textContent = `Add Todo`;
@@ -180,16 +180,16 @@ function changeModalContent(func, todoTitle=0) {
     content.innerHTML = `
       <form class="flex justify-content-center mb-10">
         <div class="flex flex-direction-col">
-          <label class="mt-10" for="todoboxHeader">Header:</label>
+          <label class="mt-10" for="todoBoxTitle">Header:</label>
         </div>
         <div class="flex flex-direction-col flex-grow my-10">
-          <input class="mt-10" type="text" id="todoboxHeader" name="todoboxHeader">
+          <input class="mt-10" type="text" id="todoBoxTitle" name="todoBoxTitle">
         </div>
       </form>
     `;
   } else if (func == "delete-todobox") {
     header.textContent = `Delete Todo Box`;
-    content.innerHTML = `Do you want to delete Todo Box and all of it's content?`;
+    content.innerHTML = `Do you want to delete Todo Box "${title}" and all of it's content?`;
   }
 }
 
@@ -214,6 +214,7 @@ function addTodoBoxToDom(todoBox) {
 
 function addTodoBoxEventListeners(element) {
   const boxId = element.dataset.id;
+  const todoBox = todoBoxes.find((todoBox) => todoBox.id == boxId);
 
   element.querySelector(".icon-add-todo").addEventListener("click", (event) => {
     changeModalContent("add-todo");
@@ -229,17 +230,16 @@ function addTodoBoxEventListeners(element) {
     openModal();
   });
 
-  document.querySelectorAll(".icon-delete-todobox").forEach((icon) => {
-    icon.addEventListener("click", (event) => {
-
-    changeModalContent("delete-todobox");
+  element.querySelector(".icon-delete-todobox").addEventListener("click", (event) => {
+    changeModalContent("delete-todobox", todoBox.title);
     setModalOkButton("Delete", (event) => {
-      // functions.js
+      deleteTodoBox(boxId);
+      element.parentNode.removeChild(element);
       closeModal();
     });
 
     openModal();
-    }); 
+
   });
 }
 
@@ -283,19 +283,16 @@ function addTodoEventListeners(element) {
   });
 }
 
-
-
 // Create new box
 document.querySelector(".icon-add-todobox").addEventListener("click", (event) => {
   changeModalContent("add-todobox");
   setModalOkButton("Create", (event) => {
-    // functions.js
+    let form = document.querySelector('.modal form');
+    let data = new FormData(form);
+    let todoBox = addTodoBox(data);
+    addTodoBoxToDom(todoBox);
     closeModal();
   });
 
   openModal();
 });
-
-
-
-

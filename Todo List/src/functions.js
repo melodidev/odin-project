@@ -38,5 +38,19 @@ export function changeDone(id, boxId) {
 }
 
 // delete todo box
+export function deleteTodoBox(boxId) {
+	setTodoBoxes(todoBoxes.filter((todoBox) => todoBox.id != boxId));
+}
 
 // add todo box
+export function addTodoBox(data) {
+	let todoBox = {
+		title: data.get("todoBoxTitle"),
+		items: [],
+		id: getUniqueId(),
+	};
+
+	todoBoxes.push(todoBox);
+
+	return todoBox;
+}
