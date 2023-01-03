@@ -3,10 +3,11 @@ import { todoBoxes } from './data';
 import { addTodo, deleteTodo, changeDone, deleteTodoBox, addTodoBox } from './functions';
 import { openModal, closeModal, setModalOkButton } from './modal';
 
+let msnry = null;
+
 export function setMasonry() {
   var elem = document.querySelector('.container');
-  var msnry = new Masonry( elem, {
-    // options
+  msnry = new Masonry(elem, {
     itemSelector: '.box'
   });
 }
@@ -209,6 +210,10 @@ function addTodoBoxToDom(todoBox) {
   let element = createElements(domTreeTodoBoxes(todoBox));
   container.appendChild(element);
   addTodoBoxEventListeners(element);
+  if (msnry) {
+    msnry.appended(element);
+    msnry.layout();
+  }
   return element;
 }
 

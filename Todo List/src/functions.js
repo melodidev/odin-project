@@ -1,6 +1,6 @@
 import { todoBoxes, setTodoBoxes, getUniqueId } from './data';
 
-// delete todo
+// Delete todo
 export function deleteTodo(id, boxId) {
 	setTodoBoxes(todoBoxes.map((todoBox) => {
 		todoBox.items = todoBox.items.filter((todo) => todo.id != id);
@@ -8,7 +8,7 @@ export function deleteTodo(id, boxId) {
 	}));
 }
 
-// add todo
+// Add todo
 export function addTodo(data, boxId) {
 	let todo = {
 		id: getUniqueId(),
@@ -25,7 +25,7 @@ export function addTodo(data, boxId) {
 	return todo;
 }
 
-// done todo
+// Done todo
 export function changeDone(id, boxId) {
 	let todoBox = todoBoxes.find(todoBox => todoBox.id == boxId);
 	let todo = todoBox.items.find(todo => todo.id == id);
@@ -37,12 +37,12 @@ export function changeDone(id, boxId) {
 	}
 }
 
-// delete todo box
+// Delete todo box
 export function deleteTodoBox(boxId) {
 	setTodoBoxes(todoBoxes.filter((todoBox) => todoBox.id != boxId));
 }
 
-// add todo box
+// Add todo box
 export function addTodoBox(data) {
 	let todoBox = {
 		title: data.get("todoBoxTitle"),
