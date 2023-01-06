@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rowdies&family=Signika+Negative:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+	<title>🌦 Weather</title>
+</head>
+<body>
+	<div class="container flex">
+		<div class="card flex flex-direction-col justify-content-center p-30">
+			<div class="flex align-items-center">
+				<input class="search pl-10" type="search" autofocus value="London">
+				<button class="btn-search hover-cursor-pointer mt-5">
+					<span class="material-symbols-outlined">search</span>
+				</button>
+			</div>
+			<div class="weather-container flex align-items-center">
+				<img src="#">
+				<div class="weather-status">
+					<div class="mainWeather fs-45"></div>
+					<div class="description"></div>
+				</div>
+			</div>
+			<div class="details-container flex align-items-center">
+				<div class="temperature fs-100"></div>
+				<button class="btn-unit align-self-start hover-cursor-pointer mt-20 mr-15">°C</button>
+				<div class="fw-500">
+					<div>Feels like:<span class="feels mx-5"></span><span class="feels-unit">°C</span></div>
+					<div>Humidity:<span class="humidity mx-5"></span>%</div>
+					<div>Wind speed:<span class="wind-speed mx-5"></span>km/h</div>
+				</div>
+			</div>
+			<div class="error-msg display-none">
+				<div class="fs-45 my-30">｡ﾟ･ (>﹏<) ･ﾟ｡</div>
+				<div>I couldn't find a place like that!</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
