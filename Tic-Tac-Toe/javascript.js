@@ -101,13 +101,16 @@ function checkIfFinished(player, player1, player2) {
 			status.classList.add("visibility-hidden");
 			boxContainer.classList.add("pointer-events-none");
 			announce.textContent = `${player.name} wins!`;
-			
-		} else if (fullBoxNum == 9) {
-			status.classList.add("visibility-hidden");
-			boxContainer.classList.add("pointer-events-none");
-			announce.textContent = `It's a tie!`;
+			fullBoxNum = 0;	
 		}
 	});
+
+	if (fullBoxNum == 9) {
+		status.classList.add("visibility-hidden");
+		boxContainer.classList.add("pointer-events-none");
+		announce.textContent = `It's a tie!`;
+	}
+
 }
 
 function replay(player1, player2) {
